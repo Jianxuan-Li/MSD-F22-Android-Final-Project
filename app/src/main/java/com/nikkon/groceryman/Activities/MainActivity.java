@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     public static MainActivity instance;
     private HomeFragment homeFragment;
-
-
-
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -48,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         if (savedInstanceState != null) {
             //Restore the fragment's instance
             homeFragment = (HomeFragment) getSupportFragmentManager().getFragment(savedInstanceState, "homeFragment");
-
         }
         else {
             homeFragment = new HomeFragment();
@@ -65,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         //Save the fragment's instance
         if (homeFragment.isAdded()) {
             getSupportFragmentManager().putFragment(outState, "homeFragment", homeFragment);
-
         }
 
     }
@@ -76,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.relativelayout, fragment);
             ft.commitAllowingStateLoss();
-
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -105,15 +98,19 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         Fragment fragment = null;
         switch (item.getItemId()) {
             case R.id.nav_home:
+                //home fragment transaction
                 fragment =  new HomeFragment();
                 break;
             case R.id.nav_chart:
+                //chart fragment transaction
                 fragment = new ChartFragment();
                 break;
             case R.id.nav_shopping_list:
+                //shopping list fragment transaction
                 fragment = new ShoppingListFragment();
                 break;
             case R.id.nav_qr_scan:
+                //qr scan fragment transaction
                 fragment = new ScannerFragment();
                 break;
         }
